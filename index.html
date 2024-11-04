@@ -11,32 +11,42 @@
 </head>
 <body>
   <h1>Simple image cropper</h1>
-  <p>Include the pixel sizes of images</p>
+  <p>Use this tool to crop and compress any image</p>
   <div id="drop-area">Drag & drop images here</div>
   <div class="resolution-select hidden">
-    <label for="resolution-dropdown">Choose a resolution:</label>
+    <span class="form-heading">Choose a size</span>
+    <label for="resolution-dropdown">Image size</label>
+    <span class="field-info">If chosen, this dropdown will overwrite the custom size</span>
     <select id="resolution-dropdown">
       <option value="" selected>select</option>
-      <option value="740x494">740x494</option>
-      <option value="860x484">860x484</option>
-      <option value="1440x810">1440x810</option>
-      <option value="1440x610">1440x610</option>
-      <option value="735x980">735x980</option>
+      <option value="740x494">740x494px</option>
+      <option value="860x484">860x484px</option>
+      <option value="1440x810">1440x810px</option>
+      <option value="1440x610">1440x610px</option>
+      <option value="735x980">735x980px</option>
     </select>
     <br/>
-    <label for="resolution-field">Or enter a custom resolution:</label>
+    <span class="form-heading">Or enter a custom size</span>
     <br/>
-    <input type="text" id="width"><span>x</span>
-    <input type="text" id="height">
-    <br/>
+    <div class="custom-resolution">
+      <div>
+        <label for="width">Image width</label>
+        <input type="number" id="width" placeholder="740">
+      </div>
+      <span>x</span>
+      <div>
+        <label for="height">Image height</label>
+        <input type="number" id="height" placeholder="494">
+      </div>
+    </div>
     <button id="apply-resolution">Apply resolution</button>
   </div>
-  <div class="loader hide-loader" id="loader">
+  <div class="loader hidden" id="loader">
   </div>  
   <ul id="preview-list"></ul>
-  <button id="download-all">Download All Cropped Images</button>
+  <button class="download-all hidden">Download all cropped images</button>
 
-  <script src="imagebitmap_crop.js"></script>
+  <script src="smartcrop+dropdown.js"></script>
   
 </body>
 </html>
