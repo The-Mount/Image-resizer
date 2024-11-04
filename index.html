@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Cropper</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.7.1/jszip.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/compressorjs@1.1.1/dist/compressor.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/smartcrop/2.0.5/smartcrop.min.js"></script>
+</head>
+<body>
+  <h1>Simple image cropper</h1>
+  <p>Include the pixel sizes of images</p>
+  <div id="drop-area">Drag & drop images here</div>
+  <div class="resolution-select hidden">
+    <label for="resolution-dropdown">Choose a resolution:</label>
+    <select id="resolution-dropdown">
+      <option value="" selected>select</option>
+      <option value="740x494">740x494</option>
+      <option value="860x484">860x484</option>
+      <option value="1440x810">1440x810</option>
+      <option value="1440x610">1440x610</option>
+      <option value="735x980">735x980</option>
+    </select>
+    <br/>
+    <label for="resolution-field">Or enter a custom resolution:</label>
+    <br/>
+    <input type="text" id="width"><span>x</span>
+    <input type="text" id="height">
+    <br/>
+    <button id="apply-resolution">Apply resolution</button>
+  </div>
+  <div class="loader hide-loader" id="loader">
+  </div>  
+  <ul id="preview-list"></ul>
+  <button id="download-all">Download All Cropped Images</button>
+
+  <script src="imagebitmap_crop.js"></script>
+  
+</body>
+</html>
