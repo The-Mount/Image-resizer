@@ -9,6 +9,7 @@ const customResHeight = document.getElementById("height");
 const loader = document.querySelector(".loader");
 const fileCounter = document.querySelector(".file-counter");
 const fileCounterContent = document.querySelector(".file-counter p");
+const finishedHeading = document.querySelector(".finished-heading");
 let rawImages = [];
 let croppedImages = [];
 let cropSize = {
@@ -184,6 +185,7 @@ function createListItem(file, img, croppedImageURL, blob) {
   downloadButton.onclick = () => downloadImage(blob, file.name);
   listItem.appendChild(downloadButton);
   downloadAllButton.classList.remove('hidden');
+  finishedHeading.classList.remove('hidden');
 
   previewList.appendChild(listItem);
 }

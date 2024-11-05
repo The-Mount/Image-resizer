@@ -20,6 +20,7 @@
   </div>
   <div class="resolution-select hidden">
     <span class="form-heading">Choose a size</span>
+    <hr>
     <label for="resolution-dropdown">Image size</label>
     <span class="field-info">For image size reference, consult our <a href="https://www.msmu.edu/component-library/content-types/" target="_blank">content type library</a></span>
     <select id="resolution-dropdown" autocomplete="off">
@@ -36,6 +37,7 @@
     
     <br/>
     <span class="form-heading">Or enter a custom size</span>
+    <hr>
     <br/>
     <div class="custom-resolution">
       <div>
@@ -51,7 +53,11 @@
     <button id="apply-resolution">Apply resolution</button>
   </div>
   <div class="loader hidden" id="loader">
-  </div>  
+  </div>
+  <div class="finished-heading hidden">
+    <p class="form-heading">Cropped images</p>
+    <hr style="width: 500px">
+  </div>
   <ul id="preview-list"></ul>
   <button class="download-all hidden">Download all cropped images</button>
 

@@ -24,7 +24,11 @@ h1 {
 
 p {
   font-size: 1em;
-  color: #555;
+}
+
+hr {
+  color: #553377;
+  margin-top: 5px;
 }
 
 #drop-area {
@@ -190,6 +194,10 @@ button:disabled {
 
 #preview-list .image-name {
   margin-left: auto;
+}
+#preview-list li:first-child {
+  border-radius: 0px 0px 5px 5px;
+  border-top: 0px;
 }
 
 .download-all {
