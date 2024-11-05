@@ -12,31 +12,37 @@
 <body>
   <h1>Simple image cropper</h1>
   <p>Use this tool to crop and compress any image</p>
-  <div id="drop-area">Drag & drop images here</div>
+  <div id="drop-area">
+    <p>Drag & drop images here</p>
+  </div>
+  <div class="file-counter hidden">
+    <p>5 images ready for cropping</p>
+  </div>
   <div class="resolution-select hidden">
     <span class="form-heading">Choose a size</span>
     <label for="resolution-dropdown">Image size</label>
-    <span class="field-info">If chosen, this dropdown will overwrite the custom size</span>
-    <select id="resolution-dropdown">
-      <option value="" selected>select</option>
+    <span class="field-info">For image size reference, consult our <a href="https://www.msmu.edu/component-library/content-types/">content type library</a></span>
+    <select id="resolution-dropdown" autocomplete="off">
+      <option value="" selected>Use custom size</option>
       <option value="740x494">740x494px</option>
       <option value="860x484">860x484px</option>
       <option value="1440x810">1440x810px</option>
       <option value="1440x610">1440x610px</option>
       <option value="735x980">735x980px</option>
     </select>
+    
     <br/>
     <span class="form-heading">Or enter a custom size</span>
     <br/>
     <div class="custom-resolution">
       <div>
         <label for="width">Image width</label>
-        <input type="number" id="width" placeholder="740">
+        <input type="number" id="width" autocomplete="off">
       </div>
       <span>x</span>
       <div>
         <label for="height">Image height</label>
-        <input type="number" id="height" placeholder="494">
+        <input type="number" id="height" autocomplete="off">
       </div>
     </div>
     <button id="apply-resolution">Apply resolution</button>
