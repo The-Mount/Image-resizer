@@ -29,15 +29,16 @@ dropArea.addEventListener("dragleave", () => dropArea.classList.remove("drag-ove
 dropArea.addEventListener("drop", (e) => {
   e.preventDefault();
   dropArea.classList.remove("drag-over");
-  // Array.from(e.dataTransfer.files).forEach(file => {
-  //   rawImages.push(file);
-  // });
-  rawImages = e.dataTransfer.files;
+  Array.from(e.dataTransfer.files).forEach(file => {
+    rawImages.push(file);
+  });
+  // rawImages = e.dataTransfer.files;
   resolutionSelect.classList.remove('hidden')
   handleEnableFileCounter(rawImages);
 });
 
 function handleFiles(files, cropSize) {
+  fileCounterContent.innerText = `Cropping...`;
   loader.classList.remove('hidden');
   resolutionSelect.classList.add('hidden');
   Array.from(files).forEach(file => {
@@ -46,8 +47,6 @@ function handleFiles(files, cropSize) {
 }
 
 function handleLoader() {
-  console.log(croppedImages.length);
-  console.log(rawImages.length);
   if (croppedImages.length >= rawImages.length) {
     loader.classList.add('hidden');
   }
@@ -60,7 +59,7 @@ function handleEnableFileCounter(files) {
 }
 
 function handleDisableFileCounter(files) {
-  fileCounterContent.innerText = `${files.length} image(s) cropped!`;
+  fileCounterContent.innerText = `${files.length} image(s) cropped`;
   fileCounter.style.backgroundColor = "#94d600"
 }
 
