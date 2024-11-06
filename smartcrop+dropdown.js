@@ -10,6 +10,7 @@ const loader = document.querySelector(".loader");
 const fileCounter = document.querySelector(".file-counter");
 const fileCounterContent = document.querySelector(".file-counter p");
 const finishedHeading = document.querySelector(".finished-heading");
+let hasRun = false;
 let rawImages = [];
 let croppedImages = [];
 let cropSize = {
@@ -29,6 +30,10 @@ dropArea.addEventListener("dragleave", () => dropArea.classList.remove("drag-ove
 dropArea.addEventListener("drop", (e) => {
   e.preventDefault();
   dropArea.classList.remove("drag-over");
+  if (croppedImages.length > 0 && !hasRun) {
+    rawImages = [];
+    hasRun = true;
+  }
   Array.from(e.dataTransfer.files).forEach(file => {
     rawImages.push(file);
   });
@@ -49,17 +54,26 @@ function handleFiles(files, cropSize) {
 function handleLoader() {
   if (croppedImages.length >= rawImages.length) {
     loader.classList.add('hidden');
+    handleDisableFileCounter(croppedImages);
+  }
+}
+
+function isImagePlural(files) {
+  if (files.length > 1) {
+    return "images";
+  } else {
+    return "image";
   }
 }
 
 function handleEnableFileCounter(files) {
-  fileCounterContent.innerText = `${files.length} image(s) ready for cropping`;
+  fileCounterContent.innerText = `${files.length} ${isImagePlural(files)} ready for cropping`;
   fileCounter.style.backgroundColor = "#6cc5e9"
   fileCounter.classList.remove("hidden");
 }
 
 function handleDisableFileCounter(files) {
-  fileCounterContent.innerText = `${files.length} image(s) cropped`;
+  fileCounterContent.innerText = `${files.length} ${isImagePlural(files)} cropped`;
   fileCounter.style.backgroundColor = "#94d600"
 }
 
@@ -146,7 +160,7 @@ function createPreview(imageSrc, file, cropSize) {
         croppedImages.push({ name: file.name, blob });
         createListItem(file, img, croppedImageURL, blob);
         handleLoader();
-        handleDisableFileCounter(croppedImages)
+        hasRun = false;
       }, "image/jpeg", 0.9); // Set JPEG quality to 90%
     });
   };
